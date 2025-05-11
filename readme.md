@@ -42,7 +42,7 @@ Este repositório inclui:
 - Juliana  Seith
 - Ryan Oliveira
 - Vinícius Silva
-Integrantes de outra turma: 
+# Integrantes de outra turma: 
 - Pedro Henrique Neves - 5HC1
 - Enzo Sampaio - 5HC1
 > Projeto Integradtor III - Ciência da Computação - FAESA
