@@ -32,7 +32,7 @@ Este projeto visa analisar dados da pesquisa anual da Stack Overflow (2024) para
 ##  Entrega 2
 Este repositório inclui:
 - Notebook Jupyter (`AnaliseMercadoTI.ipynb`)
-- Vídeo explicativo (link)
+- Vídeo explicativo ([link](https://youtu.be/YCm_L_hHmQ0))
 
 ---
 
