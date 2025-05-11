@@ -35,5 +35,14 @@ Este repositório inclui:
 - Vídeo explicativo ([link](https://youtu.be/YCm_L_hHmQ0))
 
 ---
-
+## Integrantes:
+4HC2:
+- Arthur Coutinho Chagas
+- Jairo Cavalcanti 
+- Juliana  Seith
+- Ryan Oliveira
+- Vinícius Silva
+Integrantes de outra turma: 
+- Pedro Henrique Neves - 5HC1
+- Enzo Sampaio - 5HC1
 > Projeto Integradtor III - Ciência da Computação - FAESA
