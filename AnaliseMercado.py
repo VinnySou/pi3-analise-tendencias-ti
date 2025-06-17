@@ -32,8 +32,7 @@ df_clean = df_clean[df_clean["Country"] != "Gabon"]
 # Menu lateral
 st.sidebar.title("🔍 Navegação")
 opcao = st.sidebar.radio("Selecione uma seção:", [
-    " Introdução",
-    "Distribuição de Cargos",
+    "Introdução",
     "Distribuição Salarial",
     "Salário Mediano por País (Top 15)",
     "Nível Educacional Mais Comum",
@@ -58,54 +57,52 @@ if cargo:
 if opcao == "Introdução":
     st.header("Bem-vindo!")
     st.markdown("""
-    Painel para analisar os dados da pesquisa anual do Stack Overflow e permitem analisar tendências como:
+    Este painel foi criado como para a analise dos dados são da pesquisa anual do Stack Overflow e permitem analisar tendências como:
 
     - Linguagens de programação mais usadas
     - Tipos de cargos mais comuns
     - Níveis de escolaridade
     - Distribuição geográfica dos devs
-    - Salários comparativos
+    - Comparação de salários
 
     ---
     **Como usar:**
     - Navegue entre os gráficos usando o menu à esquerda
     - Aplique filtros para personalizar as análises
- 
-    ####  Fonte: Stack Overflow Developer Survey 2024
+    
+    
+    ---
+    ## Integrantes:
+    4HC2:
+    - Arthur Coutinho Chagas
+    - Jairo Cavalcanti 
+    - Juliana  Seith
+    - Ryan Oliveira
+    - Vinícius Silva
+    ### Integrantes de outra turma: 
+    - Pedro Henrique Neves - 5HC1
+    - Enzo Sampaio - 5HC1
+    > Projeto Integradtor III - Ciência da Computação - FAESA
+    ---
+    
+
+    #### Fonte: Stack Overflow Developer Survey 2024
     """)
 
-elif opcao == "Distribuição de Cargos":
-    st.subheader("Distribuição de Cargos")
-
-    if not df_filtrado.empty:
-        cargos = df_filtrado['DevType'].dropna().str.split(';')
-        flat_cargos = [c.strip() for sublist in cargos for c in sublist]
-        if flat_cargos:
-            cargo_counts = pd.Series(flat_cargos).value_counts().head(10)
-            fig, ax = plt.subplots(figsize=(12,6))
-            sns.barplot(x=cargo_counts.values, y=cargo_counts.index, palette="Set2", ax=ax)
-            ax.set_title("Top 10 Cargos Mais Comuns", fontsize=18, weight="bold")
-            ax.set_xlabel("Número de Desenvolvedores", fontsize=14)
-            ax.set_ylabel("Cargo", fontsize=14)
-            ax.grid(axis='x', linestyle='--', alpha=0.7)
-            for i, v in enumerate(cargo_counts.values):
-                ax.text(v + 1, i, str(v), color='black', va='center', fontsize=12)
-            plt.tight_layout()
-            st.pyplot(fig)
-        else:
-            st.info("Nenhum dado de cargo encontrado após aplicar os filtros.")
-    else:
-        st.warning("Nenhum dado disponível para o(s) filtro(s) selecionado(s).")
-
 elif opcao == "Distribuição Salarial":
-    st.subheader("Distribuição Salarial (USD)")
+    st.subheader(" Distribuição Salarial (USD - até 95%)")
 
     if not df_filtrado.empty and df_filtrado["ConvertedCompYearly"].notna().any():
+        # Remoção de outliers extremos
+        limite_superior = df_filtrado["ConvertedCompYearly"].quantile(0.95)
+        salarios_validos = df_filtrado[df_filtrado["ConvertedCompYearly"] <= limite_superior]
+
         fig, ax = plt.subplots(figsize=(12,6))
-        sns.histplot(df_filtrado["ConvertedCompYearly"], bins=40, kde=True, color='teal', ax=ax)
+        sns.histplot(salarios_validos["ConvertedCompYearly"], bins=40, kde=True, color='mediumblue', ax=ax)
+
         ax.set_xlabel("Salário Anual (USD)", fontsize=14)
         ax.set_ylabel("Número de Desenvolvedores", fontsize=14)
-        ax.set_title("Distribuição Salarial com KDE", fontsize=18, weight='bold')
+        ax.set_title("Distribuição Salarial (até o Percentil 95)", fontsize=18, weight='bold')
         ax.grid(True, linestyle='--', alpha=0.6)
         plt.tight_layout()
         st.pyplot(fig)
