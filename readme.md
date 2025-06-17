@@ -4,7 +4,7 @@
 Este projeto tem como objetivo analisar os dados da pesquisa anual da **Stack Overflow Developer Survey 2024** para identificar tendências no mercado de tecnologia da informação. As análises buscam compreender padrões relacionados a linguagens utilizadas, níveis educacionais, salários, perfis profissionais e distribuição geográfica.
 
 ## 🗂️ Dados Utilizados
-- **Fonte**: [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024) (via Kaggle)
+- **Fonte**: [Stack Overflow Developer Survey] (via Kaggle)
 - **Formato**: CSV
 - **Atributos analisados**:
   - País (`Country`)
